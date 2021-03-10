@@ -1,0 +1,112 @@
+{
+  "Create Aggregate Root": {
+    "scope": "javascript,typescript",
+    "prefix": "car",
+    "description": "Creates an Aggregate Root",
+    "body": [
+      "import { AggregateRoot, Result, UniqueEntityID, BaseEntityProps } from '@coliving/ddd';",
+      "",
+      "export interface $1Props extends BaseEntityProps {",
+      "  $2: $3;",
+      "};",
+      "",
+      "export class $1 extends AggregateRoot<$1Props> {",
+      "  private constructor(props: $1Props, id?: UniqueEntityID) {",
+      "    super(props, id);",
+      "  }",
+      "",
+      "  get id(): UniqueEntityID {",
+      "\t  return this._id;",
+      "  }",
+      "",
+      "  get $2(): $3 {",
+      "\t  return this.props.$2;",
+      "  }",
+      "",
+      "  static create(props: $1Props, id?: UniqueEntityID): Result<$1> {",
+      "    $0",
+      "    return Result.success<$1>(new $1(props, id));",
+      "  }",
+      "}"
+    ]
+  },
+  "Create Domain Entity": {
+    "scope": "javascript,typescript",
+    "prefix": "cde",
+    "description": "Creates a Domain Entity",
+    "body": [
+      "import { Entity, Result, UniqueEntityID, BaseEntityProps } from '@coliving/ddd';",
+      "",
+      "export interface $1Props extends BaseEntityProps {",
+      "  $2: $3;",
+      "};",
+      "",
+      "export class $1 extends Entity<$1Props> {",
+      "  private constructor(props: $1Props, id?: UniqueEntityID) {",
+      "   super(props, id);",
+      "  }",
+      "",
+      "  get id(): UniqueEntityID {",
+      "\t  return this._id;",
+      "  }",
+      "",
+      "  get $2(): $3 {",
+      "\t  return this.props.$2;",
+      "  }",
+      "",
+      "  static create(props: $1Props, id?: UniqueEntityID): Result<$1> {",
+      "    $0",
+      "",
+      "    return Result.success<$1>(new $1(props, id));",
+      "  }",
+      "}"
+    ]
+  },
+  "Create Value Object": {
+    "scope": "javascript,typescript",
+    "prefix": "cvo",
+    "description": "Creates a Value Object",
+    "body": [
+      "import { ValueObject, Result } from '@coliving/ddd';",
+      "",
+      "export interface $1Props {",
+      "  value: $2;",
+      "};",
+      "",
+      "export class $1 extends ValueObject<$1Props> {",
+      "  private constructor(props: $1Props) {",
+      "   super(props);",
+      "  }",
+      "",
+      "  get value(): $2 {",
+      "   return this.props.value;",
+      "  }",
+      "",
+      "  static create(value: $2): Result<$1> {",
+      "    $0",
+      "    return Result.success<$1>(new $1({ value }));",
+      "  }",
+      "}"
+    ]
+  },
+  "Domain Component Getter": {
+    "scope": "javascript,typescript",
+    "prefix": "dgt",
+    "description": "Creates a Value Object",
+    "body": ["get $1(): $2 {", "  return this.props.$1;", "}"]
+  },
+  "Repo Interface": {
+    "scope": "javascript,typescript",
+    "prefix": "irp",
+    "description": "Creates a Repository interface",
+    "body": [
+      "import { $1 } from '../domain';",
+      "",
+      "export interface I$1Repo {",
+      "  find$1ById: $0($1Id: string) => Promise<$1 | null>;",
+      "  exists: $0($1Id: string) => Promise<boolean>;",
+      "  save: $0($1: $1) => Promise<void>;",
+      "}"
+    ]
+  }
+}
